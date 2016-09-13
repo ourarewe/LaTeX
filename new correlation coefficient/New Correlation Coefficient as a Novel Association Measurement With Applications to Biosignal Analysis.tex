@@ -1,0 +1,246 @@
+%% using bare_jrnl_transmag.tex
+%% New Correlation Coefficient as a Novel Association Measurement With Applications to Biosignal Analysis
+\documentclass[journal]{IEEEtran}
+
+\usepackage{cite}
+\usepackage[sort&compress,longnamesfirst]{natbib}
+\usepackage[pdftex]{graphicx}
+\usepackage{float}
+\usepackage{subfig}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+\begin{document}
+
+\title{New Correlation Coefficient as a Novel\\Association Measurement With Applications to Biosignal Analysis}
+
+\author{Hai~Peng,
+        Michael~Shell}
+
+% The paper headers
+\markboth{Journal of \LaTeX\ Class Files,~Vol.~14, No.~8, August~2015}%
+    {Shell \MakeLowercase{\textit{et al.}}: Bare Demo of IEEEtran.cls for IEEE Transactions on Magnetics Journals}
+
+% make the title area
+\maketitle
+
+\begin{abstract}
+    Abstract—In this paper,we propose a new correlation coefficient
+    based on Pearson’s coefficient and order statistics.
+    Theoretical derivations show that our new coefficient processes
+    the same basic properties as the Pearson’s coefficient.
+    Experimental studies based on four models and five biosignals
+    show that our new coefficient performs better than Pearson’s
+    coefficient when measuring monotone nonlinear associations.
+    Extensive statistical analyses also suggest that our new
+    coefficient has superior anti-noise robustness, small biasedness,
+    accurate time-delay detection ability, fast and robustness
+    under monotone nonlinear transformations.
+\end{abstract}
+
+% Note that keywords are not normally used for peerreview papers.
+\begin{IEEEkeywords}
+    new correlation coefficient,Pearson's product moment correlation coefficient(PPMCC),nonlinear association measure,rearangement inequality,order statics correlation coefficient(OSCC).
+\end{IEEEkeywords}
+
+\IEEEpeerreviewmaketitle
+
+\section{Introduction}
+    \IEEEPARstart{C}{ORRELATION} coefficient is a coefficient that illustrates a quantitative measure of some type of correlation and dependence, meaning statistical relationships between two
+    random variables or observed data values.It is important and
+    useful for research prevailing in many scientific and engineering
+    areas,not to mention the area of signal processing.As a
+    measure of such strength,the coefficient should be large and
+    positive if there is a high probability that large(small) values
+    of one time series are associated with large(small) value of
+    another.On the other hand,it should be large and negative if
+    the direction is inverse,namely,large(small) values of one time
+    series occur in conjunction with small(large) values of another
+    .
+    As we known,Pearsons product moment correlation coefficient
+    (PPMCC) [2]–[4] is a most widely used correlation
+    coefficient for indicating linear associations.However,it will
+    underestimate the strength of association if nonlinearity is
+    involved in the system.On the other hand,the two rank correlation
+    coefficient,Spearman’s rho(SR) and Kendall’s tau, are
+    suitable for nonlinear cases but they are not as powerful and
+    as fast as Pearson’s coefficient for linear cases. Recently,a
+    novel correlation coefficient called order statistics correlation
+    coefficient(OSCC) was proposed.OSCC has similar properties
+    with PPMCC when measuring linear association and possesses
+    comparable performance with the two rank coefficient.In this
+    paper,we propose another method that perform a little better
+    than OSCC.
+    In Section \ref{sec:new cc},we gives the definition and properties of our
+    new correlation coefficient.Section \ref{sec:models} depicts three linear and
+    one nonlinear models we use in this study.In Section \ref{sec:comparison},we
+    present the simulated signals and the associated results under
+    four models used in our investigation.Finally,Section \ref{sec:conclusion} draws
+    the conclusions on the new correlation coefficient.
+
+
+
+\section{New Correlation Coefficient}\label{sec:new cc}
+  \subsection{Definition and Properties}
+    Let$(x_{i},y_{i}),i=1,\dots ,N$,be two time series of length N.Rearranging the two time series with respect to the magnitudes of $x$ and $y$ respectively,we get two new time series denoted by $(x_{(i)},y_{(i)})$,where $x_{(1)}\leq \dots \leq x_{(N)},y_{(1)}\leq \dots \leq y_{(N)}$ are called the \emph{order statistics } of $x$ and $y$. ,we define the new correlation coefficient, as follows:
+    \begin{equation} \label{equ:def1}
+      r_N(x,y)\overset{\bigtriangleup }{=}\begin{cases}
+                                            \dfrac{r_{P}(x,y)}{r_{P}({x}',{y}')} & \text{ if } r_{P}\geq 0 \\
+                                            \dfrac{r_{P}(x,y)}{r_{P}({z}',{y}')} & \text{ if } r_{P}<0
+                                          \end{cases},
+    \end{equation}
+    where:
+    \begin{itemize}
+      \item $r_{p}$ is the Pearson's coefficient of $(x,y)$;
+      \item $({x}',{y}')$ is the order statistics of $x$ and $y$;
+      \item let $z_{i}=-x_{i}$,${z}'$ is the order statistics of $z$.
+    \end{itemize}
+    For a sample,the formula for $r_{P}$ is:
+    \begin{equation} \label{equ:rp}
+      {r}_{P}=\frac{\sum_{i=1}^{n}(x_{i}-\bar{x})(y_{i}-\bar{y})}{\sqrt{\sum_{i=1}^{n}(x_{i}-\bar{x})^{2}}\sqrt{\sum_{i=1}^{n}(y_{i}-\bar{y})^{2}}}
+    \end{equation}
+    where $\bar{x}=\frac{1}{n}\sum_{i=1}^{n}x_{i}$ (the sample mean);and analogously for $\bar{y}$.
+    Replacing $r_{P}$ by \eqref{equ:rp} in \eqref{equ:def1} gives us this formula for $r_{N}$:
+    \begin{equation} \label{equ:def2}
+      {r}_{N}=\begin{cases}
+                \dfrac{\sum_{i=1}^{n}(x_{i}-\bar{x})(y_{i}-\bar{y})}{\sum_{i=1}^{n}(x_{(i)}-\bar{x})(y_{(i)}-\bar{y})}, & \mbox{if } r_{P}\geq 0 \\
+                \dfrac{\sum_{i=1}^{n}(x_{i}-\bar{x})(y_{i}-\bar{y})}{\sum_{i=1}^{n}(z_{(i)}-\bar{z})(y_{(i)}-\bar{y})}, & \mbox{if }r_{P}<0.
+              \end{cases}
+    \end{equation}
+
+    \emph{Theorem 1:}The new correlation coefficient has the basic properties of a correlation coefficient,as follows:
+    \begin{enumerate}
+      \item $-1\leq r_{N}\leq 1$;
+      \item $r_{N}(x,y)$attains $+1(-1)$ when $x$ and $y$ are in strict increasing(decreasing) relationship;
+      \item $r_{N}({x}',{y}')=r_{N}(x,y)$ for ${x}'=k_{x}x+const_{x}$ and ${y}'=k_{y}y+const_{y}$,where $k_{x}> 0$ and $k_{y}> 0$;
+      \item if $x$ and $y$ are mutually independent and each is independent identically distributed(IID),the expectation $E\left \{  r_{N}(x,y)=0 \right \}  $ when $N\rightarrow \infty  $.
+    \end{enumerate}
+
+    \emph{Proof:}
+    \begin{enumerate}
+      \item When $r_{P}\geq 0$, according to the rearrangement inequality,it follows that:
+        \begin{equation}\label{equ:theorem1-1.1}
+          0\leq \sum_{n}^{i=1}(x_{i}-\bar{x})(y_{i}-\bar{y})\leq \sum_{n}^{i=1}(x_{(i)}-\bar{x})(y_{(i)}-\bar{y})
+        \end{equation}
+        Dividing the \ref{equ:theorem1-1.1} by $\sum_{n}^{i=1}(x_{(i)}-\bar{x})(y_{(i)}-\bar{y})$,we have $0\leq r_{N}\leq 1$;
+        When $r_{P}<0$,we know that $z_{(i)}=-x_{{n-i+1}}$ and $\bar{z}=-\bar{x}$ according to definition.Then we have
+        \begin{equation}\label{equ:theorom1-1.2}
+          \begin{split}
+               & -\sum_{n}^{i=1}(z_{(i)}-\bar{z})(y_{(i)}-\bar{y}) \\
+             = & \sum_{n}^{i=1}(x_{n-i+1}-\bar{x})(y_{i}-\bar{y}) \\
+             \leq & \sum_{n}^{i=1}(x_{(i)}-\bar{x})(y_{(i)}-\bar{y})
+          \end{split}
+        \end{equation}
+
+      \item Assume $y_{i}=\phi (x_{i}),i=1,\dot,N$.If $\phi(\bullet)$ is astrict increasing function,we have $r_{P}>0$ and $\sum_{n}^{i=1}(x_{i}-\bar{x})(y_{i}-\bar{y})=\sum_{n}^{i=1}(x_{(i)}-\bar{x})(y_{(i)}-\bar{y})$.Substituting this into \ref{equ:def2},we have $r_{N}=1$;and similarly $r_{N}=-1$ if $\phi(\bullet)$ is astrict decreasing function.
+
+      \item Substituting ${x}'$ and ${y}'$ into \ref{equ:def2},when $r_{P}({x}',{y}')\geq 0$,we have
+        \begin{equation}\label{equ:theorom1-3.1}
+          \begin{split}
+             r_{N}({x}',{y}') =& \frac{\sum({x_{i}}'-{\bar{x}}')({y_{i}}'-{\bar{y}}')}{\sum({x_{(i)}}'-{\bar{x}}')({y_{(i)}}'-{\bar{y}}')} \\
+                              =& \frac{k_{x}k_{y}\sum(x_{i}-\bar{x})(y_{i}-\bar{y})}{k_{x}k_{y}\sum(x_{(i)}-\bar{x})(y_{(i)}-\bar{y})} \\
+                              =& r_{N}(x,y);
+          \end{split}
+        \end{equation}
+        when $r_{P}({x}',{y}')<0$,we have
+        \begin{equation}\label{equ:theorom1-3.2}
+          \begin{split}
+             r_{N}({x}',{y}') & =\frac{\sum({x_{i}}'-{\bar{x}}')({y_{i}}'-{\bar{y}}')}{\sum({z_{(i)}}'-{\bar{z}}')({y_{(i)}}'-{\bar{y}}')} \\
+               & =\frac{k_{x}k_{y}\sum(x_{i}-\bar{x})(y_{i}-\bar{y})}{k_{x}k_{y}\sum(z_{(i)}-\bar{z})(y_{(i)}-\bar{y})} \\
+               & =r_{N}(x,y);
+          \end{split}
+        \end{equation}
+        Hence,we have $r_{N}({x}',{y}')=r_{N}(x,y)$.
+
+      \item Denote the numerator and denominator of \ref{equ:def1} by U and V,respectively.An application of the Delta method yields
+          \begin{equation}\label{equ:theorom1-4}
+            E{r_{N}(x,y)}=\frac{E(U)}{E(V)}+O(N^{-1}).
+          \end{equation}
+          According to \ref{equ:def1},we know that $E(U)=E{r_{P}(x,y)}=0$ where $x$ and $y$ are IID.Hence,we have $E(r_{N})=0$ to the order of $O(N^{-1})$.
+    \end{enumerate}
+
+
+  \subsection{Estimation of Correlation Coefficient in Normal Case}
+    As we known,the expectation and variance for Pearson's correlation coefficient$(r_{P})$ of a normal bivariate are respectively $E(r_{P})=\rho$ and $Var(r_{P})=\frac{(1-\rho^{2})^{2}}{n-1}$.It is clear that $r_{P}{x_{s},y_{s}}\rightarrow 1$ because $x_{s}$ and $y_{s}$ are identically distributed and increasing.SO we can suppose that $E(r_{N})=\rho$ according to Delta method.We employ two channels of signals $(x,y)~N(0,1,\rho)$ to calculate the expection and variance for new correlation coefficient($r_N$).The result compared with Pearson'correlation coefficient($r_{P}$) show n in Fig.It is easily observed that the expection and variance for new correlation coefficient($r_{N}$) are similar to those for $r_{P}$.
+
+
+\section{Models of Association and\\Performance Evaluation}\label{sec:models}
+    In this section,we introduce three linear models and on nonlinear model to model the linear and nonlinear association between two time series.In each model,a time series $x(i)$ is derived from a pure signal $s(i)$,and another signal $y(i)$ is obtained as a combination of the transformed pure signal and a white noise,$n(i)$.In all these models,the time index $i$ is runs from 1 to 100.Models if association are as follow:
+
+    \emph{1) Linear Model 1(LM1):}LM1 is construsted as
+      \begin{align}
+        x(i)&=s(i) \notag \\
+        y(i)&=s(i)+\alpha \cdot n(i)
+      \end{align}
+      where $ \alpha \in [0,1] $ is increased from 0 to 1 with a step $ \Delta \alpha =0.1 $ to control the signal-to-noise ratio (SNR).With increasing $\alpha$,the association between $x$ and $y$ becomes smaller and smaller,which means tha $r_{\xi }(\rho _{\xi })$ should have a decreasing relationship with $\alpha$.For a fixed $\alpha$ ,the greater the magnitude of $E(\rho _{\xi })$,the better its performance in the context of noise robustness.
+
+    \emph{2) Linear Model 2(LM2):}LM2 is a regression model of the form(cite)
+      \begin{align}
+        x(i)&=s(i) \notag \\
+        y(i)&=\rho \cdot s(i)+\sqrt{1-\rho ^{2}}\cdot n(i)
+      \end{align}
+      where $ \rho \in [-1,1] $ with a step $ \Delta \rho =0.01 $ characterizing the linear association.It follows by straightforward calculation that $E(\rho_{P})$ for any distribution of $s(i)$.
+
+     \emph{3) Linear Model 3(LM3):}LM3 is similar to LM1 except for a time delay $\delta =30$ introduced in channel $y$,as follows:
+        \begin{align}
+            x(i)&=s(i) \notag \\
+            y(i)&=s(i-\delta)+\alpha \cdot n(i)
+        \end{align}
+
+    \emph{4) Nonlinear Model(NM):}NM is a nonlinear model used to study the effect of nonlinear transformations to the signals on the two coefficients,as follows(cite):
+        \begin{align}
+            x(i)&=T_{x}[\beta \cdot s(i)] \notag \\
+            y(i)&=T_{y}\left [ \beta \left \{ \rho \cdot s(i)+\sqrt{1-\rho ^{2}}\cdot n(i) \right \} \right ]
+        \end{align}
+        where $T_{x}[\bullet]$ and $T_{y}[\bullet]$ are two increasing nonlinear functions.The parameter $\beta =2,4,6,8,10$ is used to control the extent of nonlinearity (greater value of $\beta$ corresponding to stronger nonlinearity),while $\rho$ has the same meaning as in LM2.
+
+
+\section{Comparison on Results for Simulated\\and Real Biosignals}\label{sec:comparison}
+    With the purpose of evaluating the feasibility of our new correlation coefficient in association studies,five main types of biosignals are employed for investigation.They are periodic,semi-periodic,stationary,nonstationary,and long-range-correlated signals which are denoted as $s_{\zeta },\zeta =p,h,a,e,l$ for notational convenience.What’s more,periodic and semi-periodic signals are classified as deterministic signals which can be described by explicit mathematical relationship;whereas stationary and nonstationary signals are classified as stochastic signals which can be described only in statistical terms.The last one of five types of biosignals is the biosignal that exhibit long range power-law correlation.A stochastic process with long range correlation means that its autocorrelation function $R(k)~k^{2H-2}$ as $k \rightarrow \infty$,where $0<H<1$ is the Hurst parameter.Its corresponding power spectral density is proportional to $f^{-(2H-1)}$.In addition,1000 episodes of independent white Gaussian noise($\mu=0$ and $\sigma^{2}=1$) are generated to do duty for noises which are involved in the linear and nonlinear models.Therefore,we can perform statistical analysis because each $r_{\xi}$ becomes a random a random variable and has a distribution.
+
+  \subsection{Simulated and Real Biosignals}
+    As remarked before,the following five representative biosignals are included in our study:
+    \begin{enumerate}
+      \item sin wave $s_{P}(i)$ of frequency 5 Hz emulating periodic biosignals;
+      \item real bipolar intra-atrial flutter signal $s_{h}(i)$ recorded during electrophysiological procedure(cite);
+      \item episode of alpha wave $s_{a}(i)$ simulated from a random Gaussian noise filtered by a band-pass Butterworth filter with passband 8 to 12 Hz (cite);
+      \item second of real EEG signal $s_{e}(i)$ (sampling rate 256 Hz) from a dataset provided by University of Tuebingen for BCI Competition 2003 (cite);
+      \item segmentation $s_{l}(i)$ of an artificial time series $s_{lf}(i)$ exhibiting long range correlation with Hurst parameter $H=0.9$ (cite).
+    \end{enumerate}
+
+    Fig.2 illustrates the five biosignals above.All the first four signals among them possess one thousand samples.The EEG signal $s_{e}(i)$ is up-sampled from 256 to 1000 Hz by linear interpolation.As for $s_{l}(i)$,we choice the 1000 samples of $s_{lf}(i)$ for association analysis.Before feeding $s_{\zeta}$ into the linear and nonlinear models,we normalized them to have mean zero and variance unity.
+
+  \subsection{Comparative Study Under Linear Model LM1}
+  Fig.3 illustrates the result that $\rho_{\xi}(\alpha)$ drops with increasing of $\alpha$ under LM1.In Fig.3a-3b,the decreasing rate of $\rho_{N}$ and $\rho_{X}$ are more slow than that of $\rho_{P}$.It means that the new coefficient and OSCC perform superiorly when deterministic signals $s_{P}$ and sh are fed into LM1.What’s more,$\rho_{N}$ even outperforms $\rho_{X}$ for $s_{h}$.On the other hand,there is little differences observed in Fig.3c-3e when the inputs are stochastic signals $s_{a}$ $s_{e}$ and $s_{l}$.From the above,the new coefficient has a better noise robustness performance than OSCC and PPMCC.
+
+  \subsection{Comparative Study Under Linear Model LM2}
+  The relationships between $\bar{\rho_{\xi}}$ and $\rho$ for the five biosignals $s_{\zeta}$ are shown in Fig.4.It is clear that 1)$-1\leq \rho_{\xi}$(Property 1);2)$\rho_{\xi}=\pm 1(r_{\xi}=\pm 1)$ as $\rho=\pm 1$,respectively(Property 2);3) $\bar{\rho_{\xi}}=0(\bar{r_{\xi}}=0)$ as $\rho=0$(Property 4);and 4)$\bar{\rho_{\xi}}(\bar{\rho_{\xi}})$ is an increasing function of $\rho$.For the reason that the closer the distance of $\bar{\rho_{\xi}}$ to the diagonal line,the smaller the associated biasedness,the unbiasedness performance can be ordered as $r_{P}>r_{N},r{X}$ when deterministic signals $s_{h}$ is the model inputs;as for order four signals,there are immaterial differences among the two methods.
+
+  \subsection{Comparative Study Under Linear Model LM3}
+  Under this model,$r_{\xi}$ is computed as a function of time-shift $\kappa$,say,which varies from -100 to 100 ms.For each $\alpha$ and each episode $n_{i}$ of 1000 white noises,$r_{\xi}(\alpha,\kappa)$ is calculated and the time-shift with respect to the maximum of $r_{\xi}(\alpha,\kappa)$ is the estimate of the time-delay $\Delta$ and denoted by $\kappa_{\Delta}$.Limited by the length of this paper,we only present the results with respect to $s_{e}$ here.Fig.5a shows the waveforms of $r_{\xi}(\alpha,\kappa)$ in the presence of a $50\%$ SNR($\alpha=1$).All the coefficients can correctly detect the time-delay between $x$ and $y$ giving $\kappa_{\Delta}=30ms$ which equals the true time-delay $\Delta$.In Fig.5b,we present the statistical results of $\kappa_{\Delta}$ versus the underlying $\alpha$ from 0 to 1 with $\Delta\alpha=0.1$.The levels of rectangular bars represent the means $\bar{\kappa_{\Delta}}$ and the error bars represent $3\times\upsilon_{\kappa_{\Delta}}$ with $\upsilon_{\kappa_{\Delta}}$ denoting the standard deviation of $\kappa_{\Delta}$.From Fig.5b it can be found that $\bar{\kappa_{\Delta}}$ slightly increases with increase of noise levels and so does the standard deviation $\upsilon_{\kappa_{\Delta}}$ for all $r_{\xi}$.The performance of time-delay detection is so unconspicuous that we do not think that there are significant difference between those methods in the aspect of detecting time delays.
+
+  \subsection{Comparative Study Under Nonlinear Model NM}
+  The nonlinear model NM is constructed on the linear model LM2 by introducing two increasing nonlinear transformations $T_{x}[\bullet]=sgn(\bullet)(\bullet)^{2}$ and $T_{y}[\bullet]=exp(\bullet)$.In addition to association parameter $\rho$ playing the same effect as in LM2,another parameter $\rho$ is employed to control the extent of nonlinearity.
+  
+  Giving nonlinearity parameter $\beta=2$,the relationships between $\bar{\rho_{\xi}}$ and $\rho$ are shown in Fig.6. It can be observe that $\rho_{N}$ and $\rho_{X}$ have smaller biasedness than $\rho_{P}$.Moreover,$r_{P}$ never approaches $\pm1$ as $\rho\rightarrow\pm1$ while $r_{N}=\pm1,r_{X}=\pm1$ as $\rho\rightarrow\pm1$.It means that $r_{P}$ underestimates the strength of association when nonlinearity is involved but $r_{N}$ and $r_{X}$ have superiority under increasing nonlinear transforms.
+  
+
+\section{Conclusion}\label{sec:conclusion}
+    In this paper,we propose a new correlation coefficient and investigate its properties.The proposed measure was evaluated using simulated and real biosignals and four models emulating linear and nonlinear situations.We also compared the behavior of our measure with PPMCC and OSCC.The comparative studies demonstrate that our new correlation coefficient performs well in whether linear or nonlinear cases and it enjoys the advantages of the PPMCC and OSCC.In most cases,the new correlation coefficient is not optimal,but it usually is the great substitution.This suboptimal feature at least avoids the worst results in practice when one has no prior knowledge as to whether the system is nonlinear
+
+
+\ifCLASSOPTIONcaptionsoff
+  \newpage
+\fi
+
+
+\bibliographystyle{IEEEtran}
+\bibliography{IEEEabrv,IEEEexample}
+
+
+\end{document}
+
+

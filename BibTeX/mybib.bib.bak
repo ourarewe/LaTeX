@@ -1,0 +1,30 @@
+% Encoding: UTF-8
+
+@InProceedings{XuChangHungEtAl2006,
+  author =        {Weichao Xu and Chunqi Chang and Hung, Y. S. and Kwan, S. K. and Fung, P. C. W.},
+  title =         {Order Statistic Correlation Coefficient and Its Application to Association Measurement of Biosignals},
+  booktitle =     {Acoustics, Speech and Signal Processing, 2006. ICASSP 2006 Proceedings. 2006 IEEE International Conference on},
+  year =          {2006},
+  volume =        {2},
+  pages =         {II},
+  month =         may,
+  __markedentry = {[Administrator:]},
+  doi =           {10.1109/ICASSP.2006.1660531},
+  issn =          {1520-6149},
+  keywords =      {Gaussian noise;electrocardiography;electroencephalography;medical signal processing;statistical analysis;EEG signal;biosignal association measurement;electroencephalography;heart signal;monotone nonlinear transformations;order statistic correlation coefficient;rearrangement inequality;statistical analysis;white Gaussian noises;Brain modeling;Electric variables measurement;Electroencephalography;Gaussian noise;Heart;Noise robustness;Statistical analysis;Statistics;Technological innovation;Time measurement}
+}
+
+@Article{XuChangHungEtAl2007,
+  author =        {Weichao Xu and Chunqi Chang and Hung, Y. S. and Kwan, S. K. and Chin Wan Fung, P.},
+  title =         {Order Statistics Correlation Coefficient as a Novel Association Measurement With Applications to Biosignal Analysis},
+  journal =       {IEEE Transactions on Signal Processing},
+  year =          {2007},
+  volume =        {55},
+  number =        {12},
+  pages =         {5552--5563},
+  month =         dec,
+  __markedentry = {[Administrator:6]},
+  doi =           {10.1109/TSP.2007.899374},
+  issn =          {1053-587X},
+  keywords =      {correlation methods;delays;higher order statistics;medical signal processing;Kendall's tau;Pearson's linear coefficient;Spearman's rho;anti-noise robustness;biosignal analysis;monotone nonlinear associations;monotone nonlinear transformations;novel association measurement;order statistics correlation coefficient;rank-based coefficients;rearrangement inequality;statistical analyses;time-delay detection ability;Atrial fibrillation;Kendall's tau;Pearson's coefficient;Spearman's rho;atrial flutter;concomitant;nonlinear association measure;order statistics;rearrangement inequality}
+}% Encoding: UTF-8
